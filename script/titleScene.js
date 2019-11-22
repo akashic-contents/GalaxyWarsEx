@@ -78,10 +78,10 @@ function createCells(scene, root, cellSize) {
 // さざなみ計算用バッファ生成
 //
 function createHeightBuffer(cellSize) {
-    heights = [];
+    var heights = [];
     for (var i = 0; i < 3; i++) {
         var col = [];
-        for (j = 0; j < game.height / cellSize; j++) {
+        for (var j = 0; j < game.height / cellSize; j++) {
             col.push(Array(game.width / cellSize).fill(0));
         }
         heights.push(col);
@@ -107,8 +107,8 @@ function createTitleScene() {
         scene.append(root);
 
         var cellSize = 16;
-        this.cells = createCells(scene, root, cellSize);
-        this.heights = createHeightBuffer(cellSize);
+        var cells = createCells(scene, root, cellSize);
+        var heights = createHeightBuffer(cellSize);
 
         var titleImageAsset = game.assets["title"];
         var title = new g.Sprite({
@@ -136,13 +136,13 @@ function createTitleScene() {
                 root.mosaicLevel--;
             } else {
                 if (math.random() < 0.05) {
-                    var x = this.cells[0].length * math.random() | 0;
-                    var y = this.cells.length * math.random() | 0;
-                    this.heights[(cntr + 1) % 3][y][x] = 2.0;
+                    var x = cells[0].length * math.random() | 0;
+                    var y = cells.length * math.random() | 0;
+                    heights[(cntr + 1) % 3][y][x] = 2.0;
                 }
             }
 
-            updateCellColor(this.cells, ripple(this.heights, cntr));
+            updateCellColor(cells, ripple(heights, cntr));
 
             var remainInSec = Math.max(0, TIME_LIMIT - cntr / game.fps);
             timerLabel.text = remainInSec === 0 ? "0.00" : (((remainInSec * 100) | 0) / 100) + "";
