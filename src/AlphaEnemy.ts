@@ -81,5 +81,11 @@ export class AlphaEnemy extends Enemy {
             Global.gameCore.entities.push(b);
         }
     }
+
+    onDied(): void {
+        super.onDied();
+        // 撃破SEを鳴らす
+        g.game.scene().asset.getAudioById("enemy_burst").play();
+    }
 }
 

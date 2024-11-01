@@ -293,6 +293,122 @@
 			"type": "script",
 			"path": "script/titleScene.js",
 			"global": true
+		},
+		"SelfDestructionEnemy": {
+			"type": "script",
+			"path": "script/SelfDestructionEnemy.js",
+			"global": true
+		},
+		"itemNew04": {
+			"type": "image",
+			"path": "image/itemNew04.png",
+			"width": 32,
+			"height": 32,
+			"global": true
+		},
+		"selfDestructionEnemy": {
+			"type": "image",
+			"path": "image/selfDestructionEnemy.png",
+			"width": 32,
+			"height": 32
+		},
+		"gameStick": {
+			"type": "image",
+			"path": "image/gameStick.png",
+			"width": 200,
+			"height": 200,
+			"global": true
+		},
+		"bgm_near_timeout": {
+			"type": "audio",
+			"path": "audio/bgm_near_timeout",
+			"systemId": "music",
+			"duration": 153578,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"bgm_normal": {
+			"type": "audio",
+			"path": "audio/bgm_normal",
+			"systemId": "music",
+			"duration": 63484,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"burst": {
+			"type": "audio",
+			"path": "audio/burst",
+			"systemId": "sound",
+			"duration": 5500,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"damege": {
+			"type": "audio",
+			"path": "audio/damege",
+			"systemId": "sound",
+			"duration": 750,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"special_attack": {
+			"type": "audio",
+			"path": "audio/special_attack",
+			"systemId": "sound",
+			"duration": 2247,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"enemy_burst": {
+			"type": "audio",
+			"path": "audio/enemy_burst",
+			"systemId": "sound",
+			"duration": 1661,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"bgm_gameover": {
+			"type": "audio",
+			"path": "audio/bgm_gameover",
+			"systemId": "sound",
+			"duration": 31556,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
 		}
 	},
 	"environment": {

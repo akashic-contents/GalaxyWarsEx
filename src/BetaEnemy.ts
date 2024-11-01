@@ -79,4 +79,10 @@ export class BetaEnemy extends Enemy {
 
         return true;
     }
+
+    onDied(): void {
+        super.onDied();
+        // 撃破SEを鳴らす
+        g.game.scene().asset.getAudioById("enemy_burst").play();
+    }
 }

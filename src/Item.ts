@@ -17,7 +17,8 @@ export class Item {
         "item03",
         "item04",
         "item05",
-        "item06"
+        "item06",
+        "itemNew04"
     ];
 
     constructor(pos: g.CommonOffset, itemType: ItemType) {

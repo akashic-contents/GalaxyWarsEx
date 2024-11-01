@@ -34,6 +34,8 @@ export class GammaEnemy extends Enemy {
 
     onDied(): void {
         super.onDied();
+        // 撃破SEを鳴らす
+        g.game.scene().asset.getAudioById("burst").play();
 
         const imageAsset = g.game.scene().asset.getImageById("gammaEnemy");
         const split = 8;

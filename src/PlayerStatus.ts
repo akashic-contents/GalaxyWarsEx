@@ -23,7 +23,8 @@ export class PlayerStatus {
             fontSize: 16,
             x: g.game.width - (16 * 9 + 4), y: 4
         });
-        Global.gameCore.hudLayer.append(this.hiScoreLabel);
+        // ハイスコア表示を消す
+        //Global.gameCore.hudLayer.append(this.hiScoreLabel);
 
         this.hpGauge = new g.E({ scene: Global.gameCore.scene });
 

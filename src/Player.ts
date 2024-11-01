@@ -6,7 +6,8 @@ import { Bullet } from "./Bullet";
 import { emmitDamageEffect } from "./emmitDamageEffect";
 
 export class Player {
-    static MAX_HP = 10; // プレイヤー最大HP
+    static MAX_HP = 30; // プレイヤー最大HP 10->30に変更
+    static MAX_SP = 5;
 
     private obstacles: number[];
     private type: EntityType;
@@ -16,11 +17,13 @@ export class Player {
     private bulletSpeedCntr = 0;
     private bulletCntr = 0;
     private bulletInterval = 10;
+    private speed = 5;
     pos: g.CommonOffset;
     spr: g.Sprite;
     shieldCntr = 0;
     score = 0;
     hp = 0;
+    sp = 0;
 
     constructor() {
         this.reset();
@@ -92,6 +95,10 @@ export class Player {
                     if (this.hp < Player.MAX_HP) this.hp++;
                     break;
 
+                case ItemType.CHARGE:
+                    if (this.sp < Player.MAX_SP) this.sp++;
+                    break;
+
                 default:
             }
 
@@ -104,6 +111,8 @@ export class Player {
             for (let i = 0; i < 3; i++) {
                 emmitDamageEffect(this);
             }
+            // おそらくダメージ処理なのでここでダメージ用SEを鳴らす
+            g.game.scene().asset.getAudioById("damege").play();
         }
     }
 
@@ -175,6 +184,28 @@ export class Player {
         if (this.piercingCntr > 0) this.piercingCntr--;
 
         return true;
+    }
+
+    specialAttack(): void {
+        if (this.sp < Player.MAX_SP) {
+            return;
+        }
+        this.sp = 0;
+        const b = new Bullet({
+            type: EntityType.PLAYER_BULLET,
+            obstacles: [EntityType.ENEMY],
+            pos: { x: this.pos.x + this.spr.width / 2, y: this.pos.y },
+            vel: { x: 0, y: -24 },
+            hp: 10,
+            homing: false,
+            imageAsset: g.game.scene().asset.getImageById("missle")
+        });
+        Global.gameCore.entities.push(b);
+        g.game.scene().asset.getAudioById("special_attack").play();
+    }
+
+    getSpeed(): number {
+        return this.speed;
     }
 
     /**

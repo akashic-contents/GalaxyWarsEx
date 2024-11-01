@@ -7,5 +7,6 @@ export enum ItemType {
 	RAPIDFIRE,
 	BULLETSPEED,
 	PIERCING,
-	RECOVER
+	RECOVER,
+	CHARGE
 }
