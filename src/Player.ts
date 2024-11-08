@@ -7,7 +7,7 @@ import { emmitDamageEffect } from "./emmitDamageEffect";
 
 export class Player {
     static MAX_HP = 30; // プレイヤー最大HP 10->30に変更
-    static MAX_SP = 5;
+    static MAX_SP = 7;
 
     private obstacles: number[];
     private type: EntityType;
@@ -96,7 +96,7 @@ export class Player {
                     break;
 
                 case ItemType.CHARGE:
-                    if (this.sp < Player.MAX_SP) this.sp++;
+                    this.sp = Player.MAX_SP;
                     break;
 
                 default:
@@ -195,10 +195,10 @@ export class Player {
             type: EntityType.PLAYER_BULLET,
             obstacles: [EntityType.ENEMY],
             pos: { x: this.pos.x + this.spr.width / 2, y: this.pos.y },
-            vel: { x: 0, y: -24 },
+            vel: { x: 0, y: -10 },
             hp: 10,
             homing: false,
-            imageAsset: g.game.scene().asset.getImageById("missle")
+            imageAsset: g.game.scene().asset.getImageById("special")
         });
         Global.gameCore.entities.push(b);
         g.game.scene().asset.getAudioById("special_attack").play();
@@ -206,6 +206,13 @@ export class Player {
 
     getSpeed(): number {
         return this.speed;
+    }
+
+    addSp(pt: number) {
+        this.sp += pt;
+        if (this.sp > Player.MAX_SP) {
+            this.sp = Player.MAX_SP;
+        }
     }
 
     /**

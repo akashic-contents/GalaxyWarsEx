@@ -19,7 +19,8 @@ const itemNames = [
     "RAPIDFIRE",
     "BULLETSPEED",
     "PIERCING",
-    "RECOVER"
+    "RECOVER",
+    "ENERGYCHARGE"
 ];
 
 class ItemGauge {

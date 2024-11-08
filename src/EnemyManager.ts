@@ -4,6 +4,7 @@ import { EntityType } from "./EntityType";
 import { AlphaEnemy } from "./AlphaEnemy";
 import { BetaEnemy } from "./BetaEnemy";
 import { GammaEnemy } from "./GammaEnemy";
+import { SelfDestructionEnemy } from "./SelfDestructionEnemy";
 
 export class EnemyManager {
     cntr: number;
@@ -40,11 +41,17 @@ export class EnemyManager {
             }
             Global.gameCore.entities.push(new AlphaEnemy());
         } else if (this.cntr === g.game.fps * 14) {
+            for (let i = 0; i < 4; i++) {
+                Global.gameCore.entities.push(new SelfDestructionEnemy());
+            }
+        } else if (this.cntr === g.game.fps * 21) {
             Global.gameCore.entities.push(new BetaEnemy());
             Global.gameCore.entities.push(new AlphaEnemy());
+            Global.gameCore.entities.push(new SelfDestructionEnemy());
             Global.gameCore.entities.push(new BetaEnemy());
             Global.gameCore.entities.push(new AlphaEnemy());
-        } else if (this.cntr >= g.game.fps * 21) {
+            Global.gameCore.entities.push(new SelfDestructionEnemy());
+        } else if (this.cntr >= g.game.fps * 28) {
             const enemyCount = this.countEnemy();
             if (enemyCount < 2 || (enemyCount < 5 && math.random() < 0.5)) {
                 const rnd = math.random();
@@ -57,6 +64,8 @@ export class EnemyManager {
                     }
                 } else if (rnd < 0.1) {
                     enemy = new AlphaEnemy();
+                } else if (rnd < 0.15) {
+                    enemy = new SelfDestructionEnemy();
                 }
                 if (enemy) {
                     Global.gameCore.entities.push(enemy);

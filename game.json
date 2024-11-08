@@ -310,7 +310,8 @@
 			"type": "image",
 			"path": "image/selfDestructionEnemy.png",
 			"width": 32,
-			"height": 32
+			"height": 32,
+			"global": true
 		},
 		"gameStick": {
 			"type": "image",
@@ -349,7 +350,7 @@
 			"type": "audio",
 			"path": "audio/burst",
 			"systemId": "sound",
-			"duration": 5500,
+			"duration": 9847,
 			"hint": {
 				"extensions": [
 					".m4a",
@@ -408,6 +409,26 @@
 					".ogg"
 				]
 			},
+			"global": true
+		},
+		"disable": {
+			"type": "audio",
+			"path": "audio/disable",
+			"systemId": "sound",
+			"duration": 1006,
+			"hint": {
+				"extensions": [
+					".m4a",
+					".ogg"
+				]
+			},
+			"global": true
+		},
+		"special": {
+			"type": "image",
+			"path": "image/special.png",
+			"width": 32,
+			"height": 32,
 			"global": true
 		}
 	},

@@ -50,6 +50,8 @@ export class Enemy {
         const itemType = this.itemTypes[Math.floor(math.random() * this.itemTypes.length)];
         const item = new Item(this.pos, itemType);
         Global.gameCore.entities.push(item);
+        // プレイヤーのSP値を増やす
+        Global.gameCore.player.addSp(1);
     }
 
     update(): boolean {
