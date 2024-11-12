@@ -14,20 +14,20 @@ export function createGameScene(): g.Scene {
         Global.gameCore = new GameCore(scene);
 
         // player input
-        // let clicked = false;
-        // scene.onPointDownCapture.add(() => {
-        //     clicked = true;
-        // });
-        // scene.onPointMoveCapture.add((ev) => {
-        //     if (!clicked) {
-        //         return;
-        //     }
-        //     Global.gameCore.player.move(ev.prevDelta.x, ev.prevDelta.y);
-        // });
-        // scene.onPointUpCapture.add(() => {
-        //     clicked = false;
-        // });
-        // 自機操作方法をバーチャルスティックの操作に変更
+        let clicked = false;
+        scene.onPointDownCapture.add(() => {
+            clicked = true;
+        });
+        scene.onPointMoveCapture.add((ev) => {
+            if (!clicked) {
+                return;
+            }
+            Global.gameCore.player.move(ev.prevDelta.x, ev.prevDelta.y);
+        });
+        scene.onPointUpCapture.add(() => {
+            clicked = false;
+        });
+        // 自機操作方法としてバーチャルスティックも追加
         const gameStickBackSize = 100;
 		const gameStickSize = 72;
         const gameStick = createGameStickEntity(
@@ -39,6 +39,10 @@ export function createGameScene(): g.Scene {
 				const speed = Global.gameCore.player.getSpeed();
 				let dx = Math.round(offset.x * speed);
 				let dy = Math.round(offset.y * speed);
+                // バーチャルスティックが使われている時は既存の入力法を使わないように
+                if (dx !== 0 || dy !== 0) {
+                    clicked = false;
+                }
 				Global.gameCore.player.move(dx, dy);
 			}
         );
@@ -49,7 +53,7 @@ export function createGameScene(): g.Scene {
         const specialButton = createSpecialAttackButton(
             scene,
             { 
-                x: g.game.width - specialButtonWidth - 24,
+                x: g.game.width - specialButtonWidth - 12,
                 y: g.game.height - gameStickBackSize - specialButtonHeight - 24,
                 width: specialButtonWidth,
                 height: specialButtonHeight

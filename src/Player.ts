@@ -191,16 +191,26 @@ export class Player {
             return;
         }
         this.sp = 0;
-        const b = new Bullet({
-            type: EntityType.PLAYER_BULLET,
-            obstacles: [EntityType.ENEMY],
-            pos: { x: this.pos.x + this.spr.width / 2, y: this.pos.y },
-            vel: { x: 0, y: -10 },
-            hp: 10,
-            homing: false,
-            imageAsset: g.game.scene().asset.getImageById("special")
-        });
-        Global.gameCore.entities.push(b);
+        const imageAsset = g.game.scene().asset.getImageById("special");
+        const speed = 10;
+        const power = 10;
+        const halfCount = 5;
+        const angleInterval = 90 / halfCount;
+        for (let i = -1; i < 2; i += 2) {
+            for (let j = 0; j < halfCount; j++) {
+                const angle = 90 + i * angleInterval * j;
+                const radian = angle * (Math.PI / 180);
+                Global.gameCore.entities.push(new Bullet({
+                    type: EntityType.PLAYER_BULLET,
+                    obstacles: [EntityType.ENEMY],
+                    pos: { x: this.pos.x + this.spr.width / 2, y: this.pos.y },
+                    vel: { x: speed * Math.cos(radian), y: -1 * speed * Math.sin(radian) },
+                    hp: power,
+                    homing: false,
+                    imageAsset
+                }));
+            }
+        }
         g.game.scene().asset.getAudioById("special_attack").play();
     }
 
