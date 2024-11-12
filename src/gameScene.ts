@@ -29,22 +29,22 @@ export function createGameScene(): g.Scene {
         });
         // 自機操作方法としてバーチャルスティックも追加
         const gameStickBackSize = 100;
-		const gameStickSize = 72;
+        const gameStickSize = 72;
         const gameStick = createGameStickEntity(
-			scene,
+            scene,
             Global.gameCore.scene.asset.getImageById("gameStick"),
-			{ x: g.game.width - gameStickBackSize - 12, y: g.game.height - gameStickBackSize - 12, width: gameStickBackSize, height: gameStickBackSize },
-			{ width: gameStickSize, height: gameStickSize },
-			(offset) => {
-				const speed = Global.gameCore.player.getSpeed();
-				let dx = Math.round(offset.x * speed);
-				let dy = Math.round(offset.y * speed);
+            { x: g.game.width - gameStickBackSize - 12, y: g.game.height - gameStickBackSize - 12, width: gameStickBackSize, height: gameStickBackSize },
+            { width: gameStickSize, height: gameStickSize },
+            (offset) => {
+                const speed = Global.gameCore.player.getSpeed();
+                let dx = Math.round(offset.x * speed);
+                let dy = Math.round(offset.y * speed);
                 // バーチャルスティックが使われている時は既存の入力法を使わないように
                 if (dx !== 0 || dy !== 0) {
                     clicked = false;
                 }
-				Global.gameCore.player.move(dx, dy);
-			}
+                Global.gameCore.player.move(dx, dy);
+            }
         );
         scene.append(gameStick);
         // Specialボタンの追加
@@ -150,76 +150,76 @@ function createGameStickEntity(
     size: g.CommonSize,
     func:(point: g.CommonOffset) => void
 ): g.E {
-	const width = area.width > size.width ? area.width : size.width;
-	const height = area.height > size.height ? area.height : size.height;
-	const entity = new g.E({
-		scene,
-		x: area.x,
-		y: area.y,
-		width,
-		height
-	});
-	const gameStickInitialX = Math.round(width / 2);
-	const gameStickInitialY = Math.round(height / 2);
-	const gameStickBack = new g.Sprite({
-		scene,
-		src: image,
-		x: gameStickInitialX,
-		y: gameStickInitialY,
-		scaleX: width / image.width,
-		scaleY: height / image.height,
-		anchorX: 0.5,
-		anchorY: 0.5,
-		opacity: 0.5
-	});
-	entity.append(gameStickBack);
-	const gameStick = new g.Sprite({
-		scene,
-		src: image,
-		x: gameStickInitialX,
-		y: gameStickInitialY,
-		scaleX: size.width / image.width,
-		scaleY: size.height / image.height,
-		anchorX: 0.5,
-		anchorY: 0.5,
-		touchable: true
-	});
-	gameStick.onPointMove.add(ev => {
-		let dx = ev.prevDelta.x;
-		let dy = ev.prevDelta.y;
-		if (gameStick.x + dx < 0 || gameStick.x + dx > width) {
-			dx = 0;
-		}
-		if (gameStick.y + dy < 0 || gameStick.y + dy > height) {
-			dy = 0;
-		}
-		gameStick.moveBy(dx, dy);
-		gameStick.modified();
-	});
-	gameStick.onPointUp.add(_ev => {
-		gameStick.moveTo(gameStickInitialX, gameStickInitialY);
-		gameStick.modified();
-	});
-	gameStick.onUpdate.add(_ev => {
-		func({ x: (gameStick.x - gameStickInitialX) / (width / 2), y: (gameStick.y - gameStickInitialY) / (height / 2) });
-	});
-	entity.append(gameStick);
-	return entity;
+    const width = area.width > size.width ? area.width : size.width;
+    const height = area.height > size.height ? area.height : size.height;
+    const entity = new g.E({
+        scene,
+        x: area.x,
+        y: area.y,
+        width,
+        height
+    });
+    const gameStickInitialX = Math.round(width / 2);
+    const gameStickInitialY = Math.round(height / 2);
+    const gameStickBack = new g.Sprite({
+        scene,
+        src: image,
+        x: gameStickInitialX,
+        y: gameStickInitialY,
+        scaleX: width / image.width,
+        scaleY: height / image.height,
+        anchorX: 0.5,
+        anchorY: 0.5,
+        opacity: 0.5
+    });
+    entity.append(gameStickBack);
+    const gameStick = new g.Sprite({
+        scene,
+        src: image,
+        x: gameStickInitialX,
+        y: gameStickInitialY,
+        scaleX: size.width / image.width,
+        scaleY: size.height / image.height,
+        anchorX: 0.5,
+        anchorY: 0.5,
+        touchable: true
+    });
+    gameStick.onPointMove.add(ev => {
+        let dx = ev.prevDelta.x;
+        let dy = ev.prevDelta.y;
+        if (gameStick.x + dx < 0 || gameStick.x + dx > width) {
+            dx = 0;
+        }
+        if (gameStick.y + dy < 0 || gameStick.y + dy > height) {
+            dy = 0;
+        }
+        gameStick.moveBy(dx, dy);
+        gameStick.modified();
+    });
+    gameStick.onPointUp.add(_ev => {
+        gameStick.moveTo(gameStickInitialX, gameStickInitialY);
+        gameStick.modified();
+    });
+    gameStick.onUpdate.add(_ev => {
+        func({ x: (gameStick.x - gameStickInitialX) / (width / 2), y: (gameStick.y - gameStickInitialY) / (height / 2) });
+    });
+    entity.append(gameStick);
+    return entity;
 }
 
 function createSpecialAttackButton(scene: g.Scene, area: g.CommonArea): g.E  {
     const entity = new g.E({
-		scene,
-		x: area.x,
-		y: area.y,
-		width: area.width,
-		height: area.height,
+        scene,
+        x: area.x,
+        y: area.y,
+        width: area.width,
+        height: area.height,
         touchable: true
-	});
+    });
     const backRect = new g.FilledRect({
         scene,
         width: area.width,
-		height: area.height,
+        height: area.height,
         cssColor: "gray"
     });
     entity.append(backRect);
@@ -233,7 +233,7 @@ function createSpecialAttackButton(scene: g.Scene, area: g.CommonArea): g.E  {
     const gageRect = new g.FilledRect({
         scene,
         width: 0,
-		height: area.height,
+        height: area.height,
         cssColor: "green",
         opacity: 0.7
     });
