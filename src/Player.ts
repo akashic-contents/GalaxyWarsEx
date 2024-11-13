@@ -111,7 +111,7 @@ export class Player {
             for (let i = 0; i < 3; i++) {
                 emmitDamageEffect(this);
             }
-            // おそらくダメージ処理なのでここでダメージ用SEを鳴らす
+            // ダメージ処理に合わせて、ダメージ用SEを鳴らす
             g.game.scene().asset.getAudioById("damege").play();
         }
     }
@@ -186,6 +186,9 @@ export class Player {
         return true;
     }
 
+    /**
+     * 必殺技実行メソッド
+     */
     specialAttack(): void {
         if (this.sp < Player.MAX_SP) {
             return;
@@ -196,6 +199,7 @@ export class Player {
         const power = 10;
         const halfCount = 5;
         const angleInterval = 90 / halfCount;
+        // 等間隔で放射状に大きめの弾を同時発射(直線上の弾は敢えて二重にして2倍の威力にしている)
         for (let i = -1; i < 2; i += 2) {
             for (let j = 0; j < halfCount; j++) {
                 const angle = 90 + i * angleInterval * j;

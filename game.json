@@ -430,6 +430,11 @@
 			"width": 32,
 			"height": 32,
 			"global": true
+		},
+		"gameUi": {
+			"type": "script",
+			"path": "script/gameUi.js",
+			"global": true
 		}
 	},
 	"environment": {

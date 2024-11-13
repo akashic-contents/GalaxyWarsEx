@@ -47,7 +47,7 @@ export class SelfDestructionEnemy extends Enemy {
         this.spr.y = this.pos.y;
         this.spr.modified();
 
-        // 7秒以内なら生きている
+        // 撃破されなければ7秒間は生存する
         return this.cntr < g.game.fps * 7;
     }
 
