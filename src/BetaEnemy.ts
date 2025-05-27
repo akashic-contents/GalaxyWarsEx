@@ -13,7 +13,7 @@ export class BetaEnemy extends Enemy {
     private moveDown: boolean;
 
     constructor() {
-        const imageAsset = Global.gameCore.scene.asset.getImageById("betaEnemy");
+        const imageAsset = Global.gameCore.scene.asset.getImage("/image/betaEnemy.png");
         const x = math.random() * (g.game.width - imageAsset.width);
         const y = -40;
         const itemTypes = [
@@ -47,7 +47,7 @@ export class BetaEnemy extends Enemy {
      * 状態更新
      */
     onUpdate(): boolean {
-        const imageAsset = Global.gameCore.scene.asset.getImageById("betaEnemy");
+        const imageAsset = Global.gameCore.scene.asset.getImage("/image/betaEnemy.png");
         if (this.moveDown) {
             this.origin.y += 8;
             if (this.pos.y >= this.dropPointY) {
@@ -66,7 +66,7 @@ export class BetaEnemy extends Enemy {
                 vel: { x: 0, y: +8 },
                 hp:2,
                 homing: false,
-                imageAsset: Global.gameCore.scene.asset.getImageById("ball")
+                imageAsset: Global.gameCore.scene.asset.getImage("/image/ball.png")
             });
             Global.gameCore.entities.push(b);
         }

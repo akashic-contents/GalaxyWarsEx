@@ -11,13 +11,13 @@ export class Item {
     type: number;
     hp: number;
 
-    static itemImageNames = [
-        "item01",
-        "item02",
-        "item03",
-        "item04",
-        "item05",
-        "item06"
+    static itemImagePaths = [
+        "/image/item01.png",
+        "/image/item02.png",
+        "/image/item03.png",
+        "/image/item04.png",
+        "/image/item05.png",
+        "/image/item06.png"
     ];
 
     constructor(pos: g.CommonOffset, itemType: ItemType) {
@@ -29,7 +29,7 @@ export class Item {
         this.hp = 1;
         this.spr = new g.Sprite({
             scene: Global.gameCore.scene,
-            src: g.game.scene().asset.getImageById(Item.itemImageNames[itemType]),
+            src: g.game.scene().asset.getImage(Item.itemImagePaths[itemType]),
             x: this.pos.x,
             y: this.pos.y
         });

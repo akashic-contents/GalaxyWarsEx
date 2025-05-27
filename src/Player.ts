@@ -33,7 +33,7 @@ export class Player {
 
         this.spr = new g.Sprite({
             scene: Global.gameCore.scene,
-            src: g.game.scene().asset.getImageById("player"),
+            src: g.game.scene().asset.getImage("/image/player.png"),
             x: this.pos.x,
             y: this.pos.y
         });
@@ -112,7 +112,7 @@ export class Player {
      */
     reset(): void {
         this.type = EntityType.PLAYER;
-        const imgAsset = g.game.scene().asset.getImageById("player");
+        const imgAsset = g.game.scene().asset.getImage("/image/player.png");
         this.pos = {
             x: (g.game.width - imgAsset.width) / 2,
             y: g.game.height - imgAsset.height * 2
@@ -157,7 +157,7 @@ export class Player {
                 vel: { x: 0, y: -bulletSpeed },
                 hp: bulletHP,
                 homing: bulletHoming,
-                imageAsset: g.game.scene().asset.getImageById("missle")
+                imageAsset: g.game.scene().asset.getImage("/image/missle.png")
             });
             Global.gameCore.entities.push(b);
         }

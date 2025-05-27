@@ -6,8 +6,8 @@ import { createTitleScene } from "./titleScene";
 //
 export = function () {
     Global.bmpFont = new g.BitmapFont({
-        src: g.game.scene().asset.getImageById("font16"),
-        map: g.game.scene().asset.getJSONContentById("glyph_area"),
+        src: g.game.scene().asset.getImage("/image/font16.png"),
+        map: g.game.scene().asset.getJSONContent("/text/glyph_area.json"),
         defaultGlyphWidth: 16,
         defaultGlyphHeight: 16
     });

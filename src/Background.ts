@@ -35,7 +35,7 @@ export class Background {
 
         if (this.cntr % 4 === 0 && math.random() < 0.5) {
             const front = math.random() < 0.25;
-            const imageAsset = Global.gameCore.scene.asset.getImageById(front ? "star01" : "star02");
+            const imageAsset = Global.gameCore.scene.asset.getImage(front ? "/image/star01.png" : "/image/star02.png");
             const star = new g.Sprite({
                 scene: Global.gameCore.scene,
                 src: imageAsset,
