@@ -23,7 +23,7 @@ export class Shield {
 
         this.spr = new g.Sprite({
             scene: Global.gameCore.scene,
-            src: g.game.scene().asset.getImageById("shield")
+            src: g.game.scene().asset.getImage("/image/shield.png")
         });
         Global.gameCore.gameLayer.append(this.spr);
 

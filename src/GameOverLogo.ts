@@ -23,7 +23,7 @@ export class GameOverLogo {
         this.pulses = [];
         this.countDown = false;
 
-        const gameOverImageAsset = Global.gameCore.scene.asset.getImageById("gameover");
+        const gameOverImageAsset = Global.gameCore.scene.asset.getImage("/image/gameover.png");
 
         this.spr = new g.E({
             scene: Global.gameCore.scene,
@@ -64,7 +64,7 @@ export class GameOverLogo {
         const pulse = {
             cntr: 0,
             life: Math.floor(2 + math.random() * 4),
-            pos: Math.floor(Global.gameCore.scene.asset.getImageById("gameover").height * math.random()),
+            pos: Math.floor(Global.gameCore.scene.asset.getImage("/image/gameover.png").height * math.random()),
             len: Math.floor(4 + math.random() * 16),
             amp: 10 + 70 * math.random(),
             mov: math.random() < 0.5 ? (math.random() < 0.5 ? 2 : -2) : 0

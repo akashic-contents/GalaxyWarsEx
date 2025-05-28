@@ -9,7 +9,7 @@ import { Player } from "./Player";
 export function emmitDamageEffect(entity: Player | Particle): void {
     const th = math.random() * Math.PI * 2;
     const spd = 750;
-    const imageAsset = Global.gameCore.scene.asset.getImageById("particle");
+    const imageAsset = Global.gameCore.scene.asset.getImage("/image/particle.png");
 
     const p = new Particle({
         pos: { x: entity.pos.x + entity.spr.width / 2, y: entity.pos.y + entity.spr.height / 2 },

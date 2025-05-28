@@ -6,8 +6,7 @@
     "module": "commonjs" ,
     "outDir": "script",
     "types" : [],
-    "allowUmdGlobalAccess": true,
-    "noImplicitUseStrict": true
+    "allowUmdGlobalAccess": true
   },
   "files": [
     "node_modules/@akashic/akashic-engine/index.runtime.d.ts"

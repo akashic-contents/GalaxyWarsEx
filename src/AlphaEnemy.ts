@@ -9,7 +9,7 @@ export class AlphaEnemy extends Enemy {
     private targetPosition: g.CommonOffset;
 
     constructor() {
-        const imageAsset = Global.gameCore.scene.asset.getImageById("alphaEnemy");
+        const imageAsset = Global.gameCore.scene.asset.getImage("/image/alphaEnemy.png");
         const pos = {
             x: math.random() * (g.game.width - imageAsset.width),
             y: math.random() * -32 - 32
@@ -61,7 +61,7 @@ export class AlphaEnemy extends Enemy {
      * 通常弾射出
      */
     fire(targetPosition: g.CommonOffset): void {
-        const imageAsset = Global.gameCore.scene.asset.getImageById("alphaEnemy");
+        const imageAsset = Global.gameCore.scene.asset.getImage("/image/alphaEnemy.png");
         let dx = targetPosition.x - this.pos.x;
         let dy = targetPosition.y - this.pos.y;
         const len = Math.sqrt(dx * dx + dy * dy);
@@ -76,7 +76,7 @@ export class AlphaEnemy extends Enemy {
                 vel: { x: dx * 8, y: dy * 8 },
                 hp: 2,
                 homing: false,
-                imageAsset: Global.gameCore.scene.asset.getImageById("ball")
+                imageAsset: Global.gameCore.scene.asset.getImage("/image/ball.png")
             });
             Global.gameCore.entities.push(b);
         }

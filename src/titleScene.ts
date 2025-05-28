@@ -110,7 +110,7 @@ export function createTitleScene(): g.Scene {
         const cells = createCells(scene, root, cellSize);
         const heights = createHeightBuffer(cellSize);
 
-        const titleImageAsset = scene.asset.getImageById("title");
+        const titleImageAsset = scene.asset.getImage("/image/title.png");
         const title = new g.Sprite({
             scene: scene,
             src: titleImageAsset,

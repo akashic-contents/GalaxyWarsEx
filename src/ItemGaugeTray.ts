@@ -40,7 +40,7 @@ class ItemGauge {
         this.getter = params.getter;
         this.tray = params.tray;
 
-        const itemGaugeImageAsset = g.game.scene().asset.getImageById(Item.itemImageNames[params.itemType]);
+        const itemGaugeImageAsset = g.game.scene().asset.getImage(Item.itemImagePaths[params.itemType]);
         this.spr = new g.Sprite({
             scene: Global.gameCore.scene,
             src: itemGaugeImageAsset,
@@ -96,7 +96,7 @@ export class ItemGaugeTray {
             text: "",
             font: Global.bmpFont,
             fontSize: 16,
-            x: 4, y: g.game.height - (g.game.scene().asset.getImageById("item01").height + ITEMGAUGE_BAR_HEIGHT + 20)
+            x: 4, y: g.game.height - (g.game.scene().asset.getImage("/image/item01.png").height + ITEMGAUGE_BAR_HEIGHT + 20)
         });
         Global.gameCore.hudLayer.append(this.spr);
     }
@@ -108,7 +108,7 @@ export class ItemGaugeTray {
         const gauge = new ItemGauge({
             pos: {
                 x: g.game.width,
-                y: g.game.height - (g.game.scene().asset.getImageById("item01").height + ITEMGAUGE_BAR_HEIGHT + 4)
+                y: g.game.height - (g.game.scene().asset.getImage("/image/item01.png").height + ITEMGAUGE_BAR_HEIGHT + 4)
             },
             itemType,
             max,

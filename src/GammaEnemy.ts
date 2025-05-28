@@ -10,7 +10,7 @@ export class GammaEnemy extends Enemy {
     static numInstance = 0;
 
     constructor() {
-        const imageAsset = g.game.scene().asset.getImageById("gammaEnemy");
+        const imageAsset = g.game.scene().asset.getImage("/image/gammaEnemy.png");
         const width = imageAsset.width;
         const height = imageAsset.height;
         const x = (g.game.width - width) / 2;
@@ -35,7 +35,7 @@ export class GammaEnemy extends Enemy {
     onDied(): void {
         super.onDied();
 
-        const imageAsset = g.game.scene().asset.getImageById("gammaEnemy");
+        const imageAsset = g.game.scene().asset.getImage("/image/gammaEnemy.png");
         const split = 8;
         const fragmentWidth = imageAsset.width / split;
         const fragmentHeight = imageAsset.height / split;
@@ -98,7 +98,7 @@ export class GammaEnemy extends Enemy {
                         vel: { x: 8 * Math.sin(th), y: 8 * Math.cos(th) },
                         hp: 2,
                         homing: false,
-                        imageAsset: g.game.scene().asset.getImageById("ball")
+                        imageAsset: g.game.scene().asset.getImage("/image/ball.png")
                     });
                     Global.gameCore.entities.push(b);
                     th = -th;
@@ -109,7 +109,7 @@ export class GammaEnemy extends Enemy {
                         vel: { x: 8 * Math.sin(th), y: 8 * Math.cos(th) },
                         hp:2,
                         homing: false,
-                        imageAsset: g.game.scene().asset.getImageById("ball")
+                        imageAsset: g.game.scene().asset.getImage("/image/ball.png")
                     });
                     Global.gameCore.entities.push(b1);
                 }
@@ -122,7 +122,7 @@ export class GammaEnemy extends Enemy {
                         vel: { x: 0, y: 4 },
                         hp: 1,
                         homing: true,
-                        imageAsset: g.game.scene().asset.getImageById("enemyMissile"),
+                        imageAsset: g.game.scene().asset.getImage("/image/enemyMissile.png"),
                         life: g.game.fps * 5, // life
                         th: Math.PI / 4
                     });
@@ -135,7 +135,7 @@ export class GammaEnemy extends Enemy {
                         vel: { x: 0, y: 4 },
                         hp: 1,
                         homing: true,
-                        imageAsset: g.game.scene().asset.getImageById("enemyMissile"),
+                        imageAsset: g.game.scene().asset.getImage("/image/enemyMissile.png"),
                         life: g.game.fps * 5, // life
                         th: -Math.PI / 4
                     });
